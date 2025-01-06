@@ -14,10 +14,15 @@ const App = observer(() => {
     useEffect( () => {
         setTimeout(() => {
             check().then(data => {
-                user.setUser(true)
+                user.setUser(data)
                 user.setIsAuth(true)
-            }).finally(() => setLoading(false))
-        }, 100)
+            }).catch((e) => {
+                user.setUser({})
+                user.setIsAuth(false)
+                console.error('My: ' + e.message)
+            })
+            .finally(() => setLoading(false))
+        }, 50)
     }, [])
 
     if (loading) {

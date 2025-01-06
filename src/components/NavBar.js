@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Context } from "..";
-import { ADMIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "../utils/consts";
+import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from "../utils/consts";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +12,7 @@ const NavBar = observer(() => {
     const logOut = () => {
       user.setUser({})
       user.setIsAuth(false)
+      localStorage.setItem('token', '');
     }
 
     return (
